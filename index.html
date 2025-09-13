@@ -60,15 +60,19 @@
         .vote-box {
             background: linear-gradient(to bottom, #ffff00, #f5f5f5); /* Yellow to light white gradient */
             color: #000;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            padding: 8px;
             font-weight: bold;
             border-radius: 5px;
             border: 1px solid #ddd;
+            
         }
+        .vote-box h4 {
+            margin: 0;
+            font-size: 1.5rem;
+        }   
         .post-card {
             border: 1px solid #dee2e6;
             border-radius: 5px;
@@ -224,12 +228,54 @@
                 <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
                     <!-- News Feed Layout -->
                     <div class="container-fluid my-4">
+                        
                         <div class="row">
                             <!-- Left Column (Main Content) -->
                             <div class="col-lg-8 col-md-7">
+                                  
+  <nav class="navbar navbar-expand-lg border-bottom pb-2 mb-4">
+    <div class="container px-0 ">
+          
+      <!-- Toggler for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
+              aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible Content -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+        
+        <!-- Left Nav Items -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium" href="#">Images</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium" href="#">Videos</a>
+          </li>
+        </ul>
+
+        <!-- Right Side -->
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-sm btn-warning text-white fw-bold">
+            More Tools
+          </button>
+          <div class="small text-muted d-none d-lg-block">
+            <a href="#" class="text-decoration-none me-2">Top Stories</a>
+            <a href="#" class="text-decoration-none me-2">Today</a>
+            <a href="#" class="text-decoration-none me-2">50 Days</a>
+            <a href="#" class="text-decoration-none">100 Pages</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
                                 <!-- Post Card -->
                                 <div class="post-card p-3 d-flex">
-                                    <div class="vote-box me-3">42</div>
+                                    <div class="vote-box me-3"><h4>42</h4> <small  class="d-block">Digg it</small></div>
                                     <div class="flex-grow-1">
                                         <div class="post-title"><a href="#">Breakthrough in Renewable Energy Announced</a></div>
                                         <p class="text-muted mb-2">Scientists unveil a new solar panel design that doubles efficiency, promising a significant reduction in energy costs.</p>
@@ -245,7 +291,7 @@
                                 </div>
                                 <!-- Post Card -->
                                 <div class="post-card p-3 d-flex">
-                                    <div class="vote-box me-3">19</div>
+                                    <div class="vote-box me-3"><h4>24</h4><small class="d-block">Digg it</small></div>
                                     <div class="flex-grow-1">
                                         <div class="post-title"><a href="#">AI Model Predicts Weather with 99% Accuracy</a></div>
                                         <p class="text-muted mb-2">A new AI system developed by researchers can predict weather patterns with unprecedented precision.</p>
