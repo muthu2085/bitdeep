@@ -153,7 +153,7 @@
     .tab-content {
       padding: 1rem;
       background: #fff;
-      border: 1px solid #ddd;
+      border: 0px solid #ddd;
       border-top: none;
     }
     .rating {
@@ -177,7 +177,45 @@
     }
     .bullets {padding: 0 0 6px;}
     .bullets li {list-style: none; background:url('tick.jpg') no-repeat 0 2px; font-size:14px; padding-left: 20px; margin-bottom: 10px;}
-    .button {border:1px solid #333; border-radius: 4px; text-decoration: none; color:#333; margin-top: 20px; padding: 8px 24px; font-size:13px; text-transform: uppercase;}
+    .button {
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    margin-top: 20px;
+    padding: 6px 20px;
+    font-size: 18px;
+    
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+    display: inline-block;
+    }
+    #myTab .nav-item {
+      margin-right: 10px;
+    }
+    #myTab .nav-link {
+      
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: #000;
+  text-decoration: none;
+  background: 0 0;
+    background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  border-radius:10px;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  font-weight: 600;
+  background-color: #d9e9f9;
+
+
+    }
+    #myTab .nav-link.active {
+      
+      background-color: #fff;
+      
+    }
   </style>
 </head>
 <body>
@@ -273,7 +311,7 @@
               </ul>
             </div>
           </div>
-          <a href="" class="button">view demo</a>
+          <a href="" class="button">View Demo</a>
         </div>
       </div>
       <div class="card mb-4">
