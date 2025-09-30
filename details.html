@@ -41,9 +41,22 @@
   height: 16px;
   box-shadow: none !important;
 }
+.card-body {padding: 15px;}
     .buy-box .price {
       font-size:36px;
       color:#fff;
+    }
+    .cardbox {
+      height:215px;
+    }
+    .xxl {
+      font-size:36px;
+      line-height: 36px;
+    }
+    .abstext {
+      position: absolute;
+      bottom: 10px;
+      margin: 0;
     }
     .buy-box .btns {
     padding: 0px 32px;
@@ -65,8 +78,9 @@
       align-items: flex-end }
     
     .timer p {margin-bottom: 0;}  
-    .timer p:first-child {margin-bottom:10px; font-size:16px; color:#555;}
-    .timer p strong {font-size:16px; color:#000;}
+    .timer p:first-child {margin-bottom:0px; font-size:16px; color:#555;}
+    .timer p strong {font-size:36px; font-weight: 600; color:#000;}
+    .timer p strong small {font-size:16px;}
     .boughtbox {
       background-color:#ddeccb;
       padding:20px;
@@ -203,19 +217,121 @@
   text-decoration: none;
   background: 0 0;
     background-color: rgba(0, 0, 0, 0);
-  border: 0;
+  border: 1px solid #49bfdb;
   border-radius:10px;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
   font-weight: 600;
   background-color: #d9e9f9;
-
+  padding: 7px 25px;    
 
     }
-    #myTab .nav-link.active {
+    #myTab .nav-link.active, #myTab .nav-link:hover {
       
       background-color: #fff;
       
     }
+    .text-xxl {font-size:32px;}
+    .number {
+      font-size: 24px;
+      font-weight: 600;
+      display:flex;
+      justify-content: space-between;
+      margin-top:5px;
+    }
+      .deal-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0px;
+    align-items: center;
+    border-bottom: 1px solid var(--card-border);
+    transition: background .15s ease;
+  }
+
+  .deal-item:last-child{
+    border-bottom: none;
+  }
+
+  .deal-item:hover{
+    background: rgba(11,105,255,0.04);
+  }
+
+  /* thumbnail */
+  .thumb {
+    flex: 0 0 92px;
+    height: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    display:inline-block;
+    background-color: #d0eef6;
+    box-shadow: 0 2px 6px rgba(16,24,40,0.06);
+  }
+
+  .thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display:block;
+  }
+
+  .deals-img {
+    width:100px;  
+    height: 72px;
+    background-color: #d0eef6;
+  }
+
+  /* title + meta */
+  .deal-body{
+    flex: 1 1 auto;
+    min-width: 0;
+    display:flex;
+    flex-direction: column;
+    gap:6px;
+  }
+
+  .deal-title{
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .deal-date{
+    font-size: 13px;
+    color: var(--muted); /* light grey per request */
+    margin: 0;
+  }
+
+  /* little badge for 'deal type' optional */
+  .badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(11,105,255,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(11,105,255,0.12);
+  }
+ .deals-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  /* Responsive tweaks */
+  @media (max-width:560px){
+    .deal-item{
+      gap: 10px;
+      padding: 10px 12px;
+    }
+    .thumb{
+      flex-basis: 76px;
+      height: 52px;
+    }
+    .deals {
+      margin: 8px;
+    }
+  }
   </style>
 </head>
 <body>
@@ -224,15 +340,15 @@
   <div class="row g-4">
     <!-- Left Side -->
     <div class="col-lg-8">
-      <div class="card mb-4">
-        <div class="row g-0 align-items-center">
-          <div class="col-md-3">
+      <div class="card cardbox mb-4">
+        <div class="row g-0">
+          <div class="col-md-5">
             <img src="avatar.jpg" class="img-fluid rounded-start" alt="profile">
           </div>
-          <div class="col-md-9">
+          <div class="col-md-7">
             <div class="card-body">
-              <h5 class="card-title">Title of the review sample text sample text sample text</h5>
-              <p class="text-muted">CRM • AI agent</p>
+              <h5 class="card-title xxl">Title of the review sample text sample text sample text</h5>
+              <p class="text-muted abstext">CRM • AI agent</p>
             </div>
           </div>
         </div>
@@ -244,26 +360,28 @@
           <h4 class="mb-3 sectitle">User Reviews</h4>
           <div class="d-flex align-items-center mb-3">
             <span class="badge bg-primary me-2">7.9</span>
-            <span class="fw-bold me-2">Good - 341 reviews</span>
-            <a href="#" class="ms-auto small">Read all reviews</a>
+            <span class="me-2"><b>Good</b> - 341 <small class="small">reviews</small></span>
+            <a href="#" class="small" style="text-decoration: none;">Read all reviews</a>
           </div>
           <p>Categories:</p>
           <div class="row">
-          <div class="mb-4 col-md-6">Works as advertised <span class="float-end">8.2</span>
+          <div class="mb-4 col-md-6"><small>Works as advertised</small> <span class="float-end">8.2</span>
             <div class="progress"><div class="progress-bar bg-primary" style="width:82%"></div></div>
           </div>
-          <div class="mb-4 col-md-6">Support <span class="float-end">8.4</span>
-            <div class="progress"><div class="progress-bar bg-success" style="width:84%"></div></div>
+          <div class="mb-4 col-md-6"><small>Quick deployment</small> <span class="float-end">8.1</span>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:81%"></div></div>
           </div>
-          <div class="mb-4 col-md-6">Easy to use <span class="float-end">8.3</span>
-            <div class="progress"><div class="progress-bar bg-info" style="width:83%"></div></div>
+          <div class="mb-4 col-md-6"><small>Support</small> <span class="float-end">8.4</span>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:84%"></div></div>
           </div>
-          <div class="mb-4 col-md-6">Quick deployment <span class="float-end">8.1</span>
-            <div class="progress"><div class="progress-bar bg-warning" style="width:81%"></div></div>
-          </div>
-          <div class="mb-4 col-md-6">Value for money <span class="float-end">7.4</span>
+           <div class="mb-4 col-md-6"><small>Value for money</small> <span class="float-end">7.4</span>
             <div class="progress"><div class="progress-bar bg-danger" style="width:74%"></div></div>
           </div>
+          <div class="mb-4 col-md-6"><small>Easy to use</small> <span class="float-end">8.3</span>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:83%"></div></div>
+          </div>
+          
+         
           </div>
         </div>
       </div>
@@ -276,7 +394,7 @@
             <div class="col-md-6">
               <p class="d-flex align-items-center"><img src="licence.jpg" /><strong class="ms-3 d-block">License</strong></p>
               <ul class="bullets">
-                <li><span>Type:Extended License</span> <a href="" class="d-block mt-3">View Details</a></li>
+                <li><span>Type:Extended License</span> <a href="" class="d-block mt-3 small">View License Details</a></li>
               </ul>
 
             </div>
@@ -286,7 +404,7 @@
                 <li>Location : Palo Alto</li>
                 <li>Website : clone.com</li>
                 <li>Contact : info@bigdeep.com</li>
-                
+                <li>Target Audience : Youtube Creators</li>
               </ul>
             </div>
           </div>
@@ -304,10 +422,7 @@
             <div class="col-md-6">
               <p class="d-flex align-items-center"><img src="refresh.jpg" /><strong class="ms-3">Updates</strong></p>
               <ul class="bullets">
-                <li>Location : Palo Alto</li>
-                <li>Website : clone.com</li>
-                <li>Contact : info@bigdeep.com</li>
-                
+                <li><span>Last Update: June 4, 2025</span> <a href="" class="d-block mt-3 small">View Update Details</a></li>
               </ul>
             </div>
           </div>
@@ -318,8 +433,8 @@
         <div class="card-body">
       <!-- Tabs -->
       <ul class="nav nav-pills" id="myTab" role="tablist">
-        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about">About this item</button></li>
-        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#faq">FAQ</button></li>
+        <li class="nav-item me-4"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#about">About this item</button></li>
+        <li class="nav-item me-4"><button class="nav-link px-4" data-bs-toggle="tab" data-bs-target="#faq">FAQ</button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#reasons">3 reasons to buy this</button></li>
       </ul>
       <div class="tab-content">
@@ -366,29 +481,88 @@
         </div>
        
       </div>
-      <div class="timer mb-4 d-flex align-items-end">
+      <div class="timer mb-4 d-flex align-items-center">
         <div class=""><img src="timer.jpg" /></div>
         <div class="cont text-left ms-3">
         <p>Time Left To Buy</p>
-        <p><strong>23 hours</strong> <br><strong>9 minutes</strong> <br><strong>26 seconds</strong></p>
+        <p class="text-xxl"><strong>9 <small>minutes</small></strong></p>
         </div>
       </div>
       <div class="boughtbox mb-4">
         <h4 class="fw-bold">9 bought</h4>
         <div class="slider-container">
-          <span>0</span>
+        
           <div class="range-wrapper">
             <div class="triangle" id="triangle"></div>
             <span>  </span>
           </div>
-          <span>200</span>
+         
         </div>
+        <div class="number">
+          <span>0</span>
+         <span>200</span>
+         </div>
         <small>191 more needed to get the deal</small>
       </div>
       <div class="card p-3 mb-4">
         <h6>Latest deals</h6>
-        <p class="small text-muted">Coming soon...</p>
+<ul class="deals-list">
+    <li class="deal-item">
+      <div class="thumb" aria-hidden="true">
+    
       </div>
+
+      <div class="deal-body">
+        <h3 class="deal-title">50% off wireless noise-cancelling headphones</h3>
+        <p class="deal-date">Sep 28, 2025</p>
+      </div>
+    </li>
+
+    <li class="deal-item">
+      <div class="thumb">
+       
+       
+      </div>
+
+      <div class="deal-body">
+        <h3 class="deal-title">Buy 1 Get 1 — Artisan coffee blend</h3>
+        <p class="deal-date">Sep 27, 2025</p>
+      </div>
+    </li>
+
+    <li class="deal-item">
+      <div class="thumb">
+      
+      </div>
+
+      <div class="deal-body">
+        <h3 class="deal-title">30% off smart thermostat — energy saver</h3>
+        <p class="deal-date">Sep 25, 2025</p>
+      </div>
+    </li>
+
+    <li class="deal-item">
+      <div class="thumb">
+       
+      </div>
+
+      <div class="deal-body">
+        <h3 class="deal-title">Save on subscription: Premium VPN — 40% off</h3>
+        <p class="deal-date">Sep 24, 2025</p>
+      </div>
+    </li>
+
+    <li class="deal-item">
+      <div class="thumb">
+        
+      </div>
+
+      <div class="deal-body">
+        <h3 class="deal-title">Weekend flash sale: 25% off hiking boots</h3>
+        <p class="deal-date">Sep 22, 2025</p>
+      </div>
+    </li>
+  </ul>      </div>
       
     </div>
   </div>
