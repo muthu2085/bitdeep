@@ -10,7 +10,7 @@
   <style>
     body {
       font-family:'Roboto', sans-serif;
-      background-color: #fafafa;
+     
     }
     .review-score {
       font-size: 1.5rem;
@@ -21,7 +21,7 @@
     }
     .buy-box {
       background: #d0eef6;
-      border: 1px solid #49c2e1;
+      border: 2px solid #49c2e1;
       padding: 0rem;
       text-align: center;
     }
@@ -32,23 +32,15 @@
       width:100%;
       align-items: center;
       background-color: #49bfdb;
+      border-bottom: 4px solid #3cb0ca;
     }
-    .shadow {
-  background: url(boxshadow.jpg) no-repeat 0 bottom;
-
-  background-size: cover;
-  width: 100%;
-  height: 16px;
-  box-shadow: none !important;
-}
+    .card {border-radius: 0px; border:1px solid #000}
 .card-body {padding: 15px;}
     .buy-box .price {
       font-size:36px;
       color:#fff;
     }
-    .cardbox {
-      height:215px;
-    }
+
     .xxl {
       font-size:36px;
       line-height: 36px;
@@ -73,7 +65,7 @@
     .timer {
       background-color:#ddeccb;
       padding:20px;
-      border:1px solid #ddd;
+      border:2px solid #a4c978;
       display: flex;
       align-items: flex-end }
     
@@ -84,9 +76,9 @@
     .boughtbox {
       background-color:#ddeccb;
       padding:20px;
-      border:1px solid #ddd;
+      border:2px solid #a4c978;
     }
-    .boughtbox h4 {font-size:20px; text-align: center; margin-bottom: 16px;}
+    .boughtbox h4 {font-size:24px; text-align: center; margin-bottom: 16px;}
   
 
 .range-wrapper {
@@ -128,7 +120,7 @@
     border-top: 15px solid #c38b58;
     z-index: 1;
 }
-    .boughtbox small{font-size:14px;}
+
  .triangle {
     position: absolute;
     top: -16px;
@@ -142,10 +134,11 @@
     z-index: 1;
 }
     .boughtbox small {
-  font-size: 14px;
+  font-size: 15px;
   display: block;
   text-align: center;
 }
+.boughtbox small.fw-hbold {font-size: calc(0.0625*15);}
     .slider-container {
     /* background: #d7e8c1; */
           padding: 10px 0px 0;
@@ -254,7 +247,7 @@
   .deal-item:hover{
     background: rgba(11,105,255,0.04);
   }
-
+  .fw-hbold{font-weight: 500;}
   /* thumbnail */
   .thumb {
     flex: 0 0 92px;
@@ -306,12 +299,16 @@
 
   /* little badge for 'deal type' optional */
   .badge {
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 999px;
-    background: rgba(11,105,255,0.08);
-    color: var(--accent);
-    border: 1px solid rgba(11,105,255,0.12);
+    font-size: 16px;
+    background:#003b95!important;
+    color: #fff;
+    width:32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border-bottom-left-radius: 0px;
   }
  .deals-list {
     list-style: none;
@@ -332,18 +329,30 @@
       margin: 8px;
     }
   }
+  .progress-bar.bg-primary {
+    background-color: #003b95!important;
+    
+  }
+  .progress-bar {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+  }
+  .reviews small {font-size:calc(0.0625rem * 16); font-weight:500; display:block; margin-bottom: 5px;}
+  .reviewtxt span {font-size:calc(0.0625rem * 15); font-weight: 500;}
   </style>
 </head>
 <body>
-
-<div class="container py-4">
-  <div class="row g-4">
+<div class="container p-4">
+  <img src="bitdeep-logo.png" />
+</div>
+<div class="container px-4">
+  <div class="row gx-4">
     <!-- Left Side -->
     <div class="col-lg-8">
       <div class="card cardbox mb-4">
         <div class="row g-0">
           <div class="col-md-5">
-            <img src="avatar.jpg" class="img-fluid rounded-start" alt="profile">
+            <img src="avatar.jpg" class="img-fluid" alt="profile">
           </div>
           <div class="col-md-7">
             <div class="card-body">
@@ -360,24 +369,41 @@
           <h4 class="mb-3 sectitle">User Reviews</h4>
           <div class="d-flex align-items-center mb-3">
             <span class="badge bg-primary me-2">7.9</span>
-            <span class="me-2"><b>Good</b> - 341 <small class="small">reviews</small></span>
+            <div class="d-flex align-items-end">
+            <span class="me-2 fw-hbold">Excellent . 341 reviews</span>
             <a href="#" class="small" style="text-decoration: none;">Read all reviews</a>
+            </div>  
           </div>
-          <p>Categories:</p>
+          <p class="pt-2"><b>Categories:</b></p>
           <div class="row">
-          <div class="mb-4 col-md-6"><small>Works as advertised</small> <span class="float-end">8.2</span>
+          <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Works as advertised</small> <span class="fw-hbold">8.2</span>
+            </div>
             <div class="progress"><div class="progress-bar bg-primary" style="width:82%"></div></div>
           </div>
-          <div class="mb-4 col-md-6"><small>Quick deployment</small> <span class="float-end">8.1</span>
+          <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Quick deployment</small> <span class="fw-hbold">8.1</span>
+            </div>
             <div class="progress"><div class="progress-bar bg-primary" style="width:81%"></div></div>
           </div>
-          <div class="mb-4 col-md-6"><small>Support</small> <span class="float-end">8.4</span>
+          <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Support</small> <span class="float-end">8.4</span>
+            </div>
             <div class="progress"><div class="progress-bar bg-primary" style="width:84%"></div></div>
           </div>
-           <div class="mb-4 col-md-6"><small>Value for money</small> <span class="float-end">7.4</span>
+           <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Value for money <img src="darrow.png" style="vertical-align: middle;" /></small> <span class="float-end">7.4</span>
+            </div>
             <div class="progress"><div class="progress-bar bg-danger" style="width:74%"></div></div>
           </div>
-          <div class="mb-4 col-md-6"><small>Easy to use</small> <span class="float-end">8.3</span>
+          <div class="mb-4 col-md-6">
+             <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Easy to use</small> <span class="float-end">8.3</span>
+            </div>
             <div class="progress"><div class="progress-bar bg-primary" style="width:83%"></div></div>
           </div>
           
@@ -502,7 +528,7 @@
           <span>0</span>
          <span>200</span>
          </div>
-        <small>191 more needed to get the deal</small>
+        <small class="fw-hbold">191 more needed to get the deal</small>
       </div>
       <div class="card p-3 mb-4">
         <h6>Latest deals</h6>
