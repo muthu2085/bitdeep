@@ -24,7 +24,98 @@
       border: 2px solid #49c2e1;
       padding: 0rem;
       text-align: center;
+      min-height: 200px; /* Keeps height consistent */
+      overflow: hidden;
+      position: relative;
     }
+
+    .fades {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 205px;
+    }
+
+    .fades.visible {
+      opacity: 1;
+      position: relative;
+    }
+
+    #parentDiv {z-index: 2;}
+    #checkoutDiv 
+    {z-index: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+    #checkoutDiv.fades.visible {z-index: 3;}
+
+    .cprice {
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 7px;
+    }
+
+    .cprice span {
+      font-weight: 700;
+    }
+
+    .txt {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 24px;
+    font-weight: 500;
+    }
+
+    .greenbtn {
+    display: inline-block;
+    background-color: #62c871;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+    .greenbtn:hover {
+      background-color: #4cae4c;
+    }
+
+    .cancel {
+      display: block;
+      margin-top: 7px;
+      color: #333;
+      font-size: 15px;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .cancel:hover {
+      color: #000;
+    }
+
+    .new-box.show .box,
+    .enter.show .box {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+
+    .new-box .price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
     .buy-box .box {
       display:flex;
       justify-content: space-between;
@@ -72,7 +163,7 @@
     .timer p {margin-bottom: 0;}  
     .timer p:first-child {margin-bottom:0px; font-size:16px; color:#555;}
     .timer p strong {font-size:36px; font-weight: 600; color:#000;}
-    .timer p strong small {font-size:16px;}
+    .timer p small {font-size:18px;}
     .boughtbox {
       background-color:#ddeccb;
       padding:20px;
@@ -339,6 +430,68 @@
   }
   .reviews small {font-size:calc(0.0625rem * 16); font-weight:500; display:block; margin-bottom: 5px;}
   .reviewtxt span {font-size:calc(0.0625rem * 15); font-weight: 500;}
+
+
+ /* slide panel + overlay for "Read all reviews" */
+ .panel-overlay {
+   position: fixed;
+   inset: 0;
+   background: rgba(0,0,0,0.6);
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity .25s ease, visibility .25s;
+   z-index: 1050;
+ }
+ .panel-overlay.show {
+   opacity: 1;
+   visibility: visible;
+ }
+
+ .slide-panel {
+   position: fixed;
+   top: 0;
+   right: 0;
+   height: 100%;
+   width: 70%;
+   max-width: 100%;
+   background: #fff;
+   z-index: 1060;
+   transform: translateX(150%);
+   transition: transform .35s ease;
+   overflow-y: auto;
+   box-shadow: -24px 0 48px rgba(0,0,0,0.25);
+   display: flex;
+   flex-direction: column;
+ }
+ .slide-panel.show {
+   transform: translateX(0);
+ }
+ @media (max-width: 768px) {
+   .slide-panel { width: 100%; }
+ }
+ .slide-panel .panel-header {
+   padding: 16px;
+   border-bottom: 1px solid #eee;
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+   gap:12px;
+ }
+ .slide-panel .panel-body { padding: 16px; }
+ .slide-panel .bar-60 {
+   height: 12px;
+   background: #eee;
+   border-radius: 8px;
+   overflow: hidden;
+   margin-bottom: 8px;
+ }
+ .slide-panel .bar-60 > i {
+   display:block;
+   height:100%;
+   width:60%;
+   background:#003b95;
+ }
+    /* ...existing code... */
   </style>
 </head>
 <body>
@@ -357,7 +510,7 @@
           <div class="col-md-7">
             <div class="card-body">
               <h5 class="card-title xxl">Title of the review sample text sample text sample text</h5>
-              <p class="text-muted abstext">CRM • AI agent</p>
+              <p class="text-muted abstext"><u>CRM</u> • <u>AI agent</u></p>
             </div>
           </div>
         </div>
@@ -371,7 +524,7 @@
             <span class="badge bg-primary me-2">7.9</span>
             <div class="d-flex align-items-end">
             <span class="me-2 fw-hbold">Excellent . 341 reviews</span>
-            <a href="#" class="small" style="text-decoration: none;">Read all reviews</a>
+            <a href="#" class="small"  id="openReviews" style="text-decoration: none;">Read all reviews</a>
             </div>  
           </div>
           <p class="pt-2"><b>Categories:</b></p>
@@ -420,7 +573,7 @@
             <div class="col-md-6">
               <p class="d-flex align-items-center"><img src="licence.jpg" /><strong class="ms-3 d-block">License</strong></p>
               <ul class="bullets">
-                <li><span>Type:Extended License</span> <a href="" class="d-block mt-3 small">View License Details</a></li>
+                <li><span>Type:Extended License</span> <a href="" id="openLicense" class="d-block mt-3 small">View License Details</a></li>
               </ul>
 
             </div>
@@ -430,7 +583,7 @@
                 <li>Location : Palo Alto</li>
                 <li>Website : clone.com</li>
                 <li>Contact : info@bigdeep.com</li>
-                <li>Target Audience : Youtube Creators</li>
+                <li>Target Audience : <a href="">Youtube Creators</a></li>
               </ul>
             </div>
           </div>
@@ -448,7 +601,7 @@
             <div class="col-md-6">
               <p class="d-flex align-items-center"><img src="refresh.jpg" /><strong class="ms-3">Updates</strong></p>
               <ul class="bullets">
-                <li><span>Last Update: June 4, 2025</span> <a href="" class="d-block mt-3 small">View Update Details</a></li>
+                <li><span>Last Update: June 4, 2025</span> <a href="" id="openUpdate" class="d-block mt-3 small">View Update Details</a></li>
               </ul>
             </div>
           </div>
@@ -485,13 +638,14 @@
     <!-- Right Side -->
     <div class="col-lg-4">
       <div class="buy-box mb-4">
+        <div id="parentDiv" class="boxwrap fades visible">
         <div class="box">
         <div class="price">$10</div>
-        <button class="btns">BUY</button>
+        <button class="btns" id="buyBtn">BUY</button>
 
         </div>
         <div class="shadow"></div>
-        <div class="d-flex justify-content-between px-4 py-3">
+        <div id="valuebox" class="d-flex justify-content-between px-4 py-3">
           <div>
             <h5 class="smtitle">Value</h5>
             <p class="value">$22</p>
@@ -505,13 +659,24 @@
             <p class="value">$12</p>
           </div>
         </div>
-       
+        <div class="cancel text-right" id="closeText">Close</div>
+        </div>
+           <!-- pre-rendered confirmation box (hidden). Shown when user clicks BUY -->
+      <div id="checkoutDiv" class="boxwrap fades" aria-hidden="true">
+        <div>
+          <h4 class="cprice">Use code: <span>Excellent job</span></h4>
+          <p class="txt">( works only for first 100 users )</p>
+          <button class="greenbtn">Continue</button>
+          <div class="cancel" id="cancelText">Cancel</div>
+        </div>
+     </div>
       </div>
+       
       <div class="timer mb-4 d-flex align-items-center">
         <div class=""><img src="timer.jpg" /></div>
         <div class="cont text-left ms-3">
         <p>Time Left To Buy</p>
-        <p class="text-xxl"><strong>9 <small>minutes</small></strong></p>
+        <p class="text-xxl d-flex align-items-center"><strong>9</strong> <small class="ps-2">minutes</small></p>
         </div>
       </div>
       <div class="boughtbox mb-4">
@@ -593,8 +758,230 @@
     </div>
   </div>
 </div>
+<footer class="mt-5 pt-4 pb-3" style="background:#f8f9fa; border-top:1px solid #e0e0e0;">
+  <div class="container text-center">
+    <hr style="margin-bottom:24px; margin-top:0; border-top:2px solid #d0eef6;">
+    <div class="mb-2">
+      <a href="#" class="mx-3 text-decoration-none text-dark fw-bold">About</a>
+      <a href="#" class="mx-3 text-decoration-none text-dark fw-bold">Follow us</a>
+      <a href="#" class="mx-3 text-decoration-none text-dark fw-bold">Contact us</a>
+    </div>
+    <small class="text-muted">&copy; 2025 BitDeep. All rights reserved.</small>
+  </div>
+</footer>
+
+<!--Reviews Slide Popup-->
+
+<!-- Reviews slide panel + overlay (hidden by default) -->
+<div id="reviewsOverlay" class="panel-overlay" aria-hidden="true"></div>
+<div id="reviewsPanel" class="slide-panel" aria-hidden="true" role="dialog" aria-label="All reviews">
+<div class="panel-header">
+  <h5 class="m-0">All reviews</h5>
+  <button id="closeReviews" class="btn btn-sm btn-outline-secondary">Close</button>
+</div>
+<div class="panel-body">
+          <h4 class="mb-3 sectitle">User Reviews</h4>
+          <div class="d-flex align-items-center mb-3">
+            <span class="badge bg-primary me-2">7.9</span>
+            <div class="d-flex align-items-end">
+            <span class="me-2 fw-hbold">Excellent . 341 reviews</span>
+            <a href="#" class="small"  id="openReviews" style="text-decoration: none;">Read all reviews</a>
+            </div>  
+          </div>
+          <p class="pt-2"><b>Categories:</b></p>
+          <div class="row">
+          <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Works as advertised</small> <span class="fw-hbold">8.2</span>
+            </div>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:82%"></div></div>
+          </div>
+          <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Quick deployment</small> <span class="fw-hbold">8.1</span>
+            </div>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:81%"></div></div>
+          </div>
+          <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Support</small> <span class="float-end">8.4</span>
+            </div>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:84%"></div></div>
+          </div>
+           <div class="mb-4 col-md-6">
+            <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Value for money <img src="darrow.png" style="vertical-align: middle;" /></small> <span class="float-end">7.4</span>
+            </div>
+            <div class="progress"><div class="progress-bar bg-danger" style="width:74%"></div></div>
+          </div>
+          <div class="mb-4 col-md-6">
+             <div class="d-flex align-items-center justify-content-between reviewtxt">
+            <small>Easy to use</small> <span class="float-end">8.3</span>
+            </div>
+            <div class="progress"><div class="progress-bar bg-primary" style="width:83%"></div></div>
+          </div>
+          
+         
+          </div>
+        </div>
+</div>
+
+<!-- License slide panel + overlay (hidden by default) -->
+<div id="licenseOverlay" class="panel-overlay" aria-hidden="true"></div>
+<div id="licensePanel" class="slide-panel" aria-hidden="true" role="dialog" aria-label="All reviews">
+<div class="panel-header">
+  <h5 class="m-0">License Details</h5>
+  <button id="closeLicense" class="btn btn-sm btn-outline-secondary">Close</button>
+</div>
+<div class="panel-body">
+  
+</div>
+</div>
+
+<!-- Update slide panel + overlay (hidden by default) -->
+<div id="updateOverlay" class="panel-overlay" aria-hidden="true"></div>
+<div id="updatePanel" class="slide-panel" aria-hidden="true" role="dialog" aria-label="All reviews">
+<div class="panel-header">
+  <h5 class="m-0">Update Details</h5>
+  <button id="closeUpdate" class="btn btn-sm btn-outline-secondary">Close</button>
+</div>
+<div class="panel-body">
+  
+</div>
+</div>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Buy button behavior: move/fades current box and reveal pre-rendered confirmation box
+  const buyBtn = document.getElementById("buyBtn");
+  const cancelText = document.getElementById("cancelText");
+  const parentDiv = document.getElementById("parentDiv");
+  const checkoutDiv = document.getElementById("checkoutDiv");
+  const valueBox = document.getElementById("valueBox");
+  const closeText = document.getElementById("closeText");
+
+  buyBtn.addEventListener("click", () => {
+      parentDiv.classList.remove("visible");
+      checkoutDiv.classList.add("visible");
+    });
+
+    cancelText.addEventListener("click", () => {
+      checkoutDiv.classList.remove("visible");
+      parentDiv.classList.add("visible");
+    });
+    cancelText.addEventListener("click", () => {
+      checkoutDiv.classList.remove("visible");
+      parentDiv.classList.add("visible");
+    });
+    closeText.addEventListener("click", () => {
+      valueBox.classList.remove("visible");
+      parentDiv.classList.add("visible");
+    });
+</script>
+
+<script>
+
+// Reviews slide open/close
+document.addEventListener('DOMContentLoaded', function () {
+const open = document.getElementById('openReviews');
+const overlay = document.getElementById('reviewsOverlay');
+const panel = document.getElementById('reviewsPanel');
+const closeBtn = document.getElementById('closeReviews');
+
+if (open && overlay && panel) {
+  function openPanel(e) {
+    if (e) e.preventDefault();
+    overlay.classList.add('show');
+    panel.classList.add('show');
+    overlay.setAttribute('aria-hidden', 'false');
+    panel.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel() {
+    overlay.classList.remove('show');
+    panel.classList.remove('show');
+    overlay.setAttribute('aria-hidden', 'true');
+    panel.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  open.addEventListener('click', openPanel);
+  closeBtn && closeBtn.addEventListener('click', closePanel);
+  overlay.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') closePanel();
+  });
+}
+});
+
+// License details slide open/close
+document.addEventListener('DOMContentLoaded', function () {
+const lopen = document.getElementById('openLicense');
+const loverlay = document.getElementById('licenseOverlay');
+const lpanel = document.getElementById('licensePanel');
+const lcloseBtn = document.getElementById('closeLicense');
+
+if (lopen && loverlay && lpanel) {
+  function lopenPanel(e) {
+    if (e) e.preventDefault();
+    loverlay.classList.add('show');
+    lpanel.classList.add('show');
+    loverlay.setAttribute('aria-hidden', 'false');
+    lpanel.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function lclosePanel() {
+    loverlay.classList.remove('show');
+    lpanel.classList.remove('show');
+    loverlay.setAttribute('aria-hidden', 'true');
+    lpanel.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  lopen.addEventListener('click', lopenPanel);
+  lcloseBtn && lcloseBtn.addEventListener('click', lclosePanel);
+  loverlay.addEventListener('click', lclosePanel);
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') lclosePanel();
+  });
+}
+});
+
+// Update details slide open/close
+document.addEventListener('DOMContentLoaded', function () {
+const uopen = document.getElementById('openUpdate');
+const uoverlay = document.getElementById('updateOverlay');
+const upanel = document.getElementById('updatePanel');
+const ucloseBtn = document.getElementById('closeUpdate');
+
+if (uopen && uoverlay && upanel) {
+  function uopenPanel(e) {
+    if (e) e.preventDefault();
+    uoverlay.classList.add('show');
+    upanel.classList.add('show');
+    uoverlay.setAttribute('aria-hidden', 'false');
+    upanel.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function uclosePanel() {
+    uoverlay.classList.remove('show');
+    upanel.classList.remove('show');
+    uoverlay.setAttribute('aria-hidden', 'true');
+    upanel.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  uopen.addEventListener('click', uopenPanel);
+  ucloseBtn && ucloseBtn.addEventListener('click', uclosePanel);
+  uoverlay.addEventListener('click', uclosePanel);
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') uclosePanel();
+  });
+}
+});
+
+ // ...existing code...
+</script>
+ 
 </body>
 </html>
