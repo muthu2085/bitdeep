@@ -10,8 +10,69 @@
   <style>
     body {
       font-family:'Roboto', sans-serif;
-     
+      background-color: #fff;
     }
+    header {
+      
+      padding: 10px 0;
+
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #2357c9 !important;
+    }
+    .search-box {
+      width: 240px;
+      border: 1px solid #ccc;  
+      display: flex;
+      justify-content: space-between;    
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 5px 10px;
+      width: 180px;
+    }
+    .search-box button {
+      background: none;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .top-nav {
+      background-color: #dce5c6;
+      font-size: 0.95rem;
+      margin-top:14px;
+    }
+    .top-nav .nav {
+        align-items: center;  
+    }
+    .top-nav .nav-item:first-child .nav-link {
+        font-weight: 700;
+        font-size:16px;
+        color:#262821
+    }
+    .top-nav .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      color:#99ad7b;
+    }
+    .alert-bar {
+      background: #f5f4e1;
+      border: 1px solid #ccc;
+      padding: 8px 15px;
+      border-radius:4px;
+      text-align: left;
+      margin-top:6px;
+      margin-left:6px;
+      margin-right:6px;
+    }
+    .alert-bar p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    
     .review-score {
       font-size: 1.5rem;
       font-weight: bold;
@@ -56,7 +117,7 @@
 
     .cprice {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 400;
     color: #000;
     margin-bottom: 7px;
     }
@@ -69,16 +130,17 @@
     font-size: 16px;
     color: #333;
     margin-bottom: 24px;
-    font-weight: 500;
+    font-weight: 400;
     }
 
     .greenbtn {
     display: inline-block;
-    background-color: #62c871;
-    color: #333;
-    font-size: 16px;
+    background-color: #26cb66;
+    border:1px solid #207e44ff!important;
+    color: #000;
+    font-size: 18px;
     font-weight: 500;
-    padding: 8px 30px;
+    padding: 6px 40px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -86,7 +148,8 @@
 }
 
     .greenbtn:hover {
-      background-color: #4cae4c;
+    background-color: #21ca62ff;
+
     }
 
     .cancel {
@@ -97,6 +160,7 @@
       text-decoration: underline;
       cursor: pointer;
       transition: color 0.2s ease;
+      font-weight:300;
     }
 
     .cancel:hover {
@@ -491,13 +555,122 @@
    width:60%;
    background:#003b95;
  }
+ .review-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .review-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #e29b64;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 22px;
+      margin-right: 15px;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .review-rating {
+      background-color: #003580;
+      color: white;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .review-country-flag {
+      width: 20px;
+      height: 14px;
+      margin-right: 6px;
+    }
+
+    .review-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-top: 8px;
+    }
+
+    .review-section {
+      margin-top: 14px;
+    }
+
+    .review-icon {
+      font-size: 1.3rem;
+      margin-right: 8px;
+    }
+
+    .review-pros {
+      color: #198754;
+    }
+
+    .review-cons {
+      color: #212529;
+    }
+
+    .review-date {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
     /* ...existing code... */
   </style>
 </head>
 <body>
-<div class="container p-4">
-  <a href="index.html"><img src="bitdeep-logo.png" /></a>
-</div>
+
+  <!-- Header -->
+  <header>
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#"> <img src="bitdeep-logo.png" /></a>
+      <div class="d-flex align-items-center">        
+        <div>
+            <a href="#" class="me-3 text-decoration-none text-primary">Submit</a>
+            <a href="#" class="ms-4 text-decoration-none text-primary">Register</a>
+            <a href="#" class="mx-2 text-decoration-none text-primary">|</a>
+            <a href="#" class="text-decoration-none text-primary">Login</a>
+        </div>
+        <div class="search-box ms-3">
+          <input type="text" placeholder="Search...">
+          <button><img src="search-icon.jpg" alt="Search" width="16"></button>
+        </div>
+      </div>
+    </div>
+      <!-- Navigation Bar -->
+  <nav class="top-nav">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#">All Topics</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">AI Agents</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">CRM</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Robots</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">APIs</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Developer Tools</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Video</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Alert Banner -->
+  <div class="alert-bar">
+     <div class="container">
+     <p>
+     <img src="alert-symbol.jpg" width="24" /> Special offer! Buy this <a href="#" class="text-primary fw-semibold">product</a> and get an accessory of your choice free ⚡
+     </p>   
+    </div>   
+ </div>
+
+  </header>
 <div class="container px-4">
   <div class="row gx-4">
     <!-- Left Side -->
@@ -510,7 +683,7 @@
           <div class="col-md-7">
             <div class="card-body">
               <h5 class="card-title xxl">Title of the review sample text sample text sample text</h5>
-              <p class="text-muted abstext"><u>CRM</u> • <u>AI agent</u></p>
+              <p class="text-black abstext"><u>CRM</u> • <u>AI agent</u></p>
             </div>
           </div>
         </div>
@@ -775,19 +948,21 @@
 <!-- Reviews slide panel + overlay (hidden by default) -->
 <div id="reviewsOverlay" class="panel-overlay" aria-hidden="true"></div>
 <div id="reviewsPanel" class="slide-panel" aria-hidden="true" role="dialog" aria-label="All reviews">
-<div class="panel-header">
-  <h5 class="m-0">All reviews</h5>
-  <button id="closeReviews" class="btn btn-sm btn-outline-secondary">Close</button>
-</div>
-<div class="panel-body">
-          <h4 class="mb-3 sectitle">User Reviews</h4>
-          <div class="d-flex align-items-center mb-3">
-            <span class="badge bg-primary me-2">7.9</span>
+<div class="panel-header flex-column justify-content-start">
+  <div class="d-flex justify-content-between w-100">
+  <h5 class="m-0">User reviews</h5>
+  <button id="closeReviews" class="btn btn-sm btn-primary">Write a Review</button>
+  </div>
+          <div class="pt-2 w-100 d-flex align-items-center flex-start">
+            <span class="badge bg-primary me-2">8.9</span>
             <div class="d-flex align-items-end">
             <span class="me-2 fw-hbold">Excellent . 341 reviews</span>
             <a href="#" class="small"  id="openReviews" style="text-decoration: none;">Read all reviews</a>
             </div>  
-          </div>
+          </div>  
+</div>
+
+<div class="panel-body">
           <p class="pt-2"><b>Categories:</b></p>
           <div class="row">
           <div class="mb-4 col-md-6">
@@ -824,6 +999,42 @@
          
           </div>
         </div>
+   <div class="panel-body">
+        <div class="review-card row">
+      <div class="col-lg-3">  
+        <div class="d-flex align-items-center mb-3">
+          <div class="review-avatar">H</div>
+          <div>
+            <div class="fw-semibold">Hermann</div>
+            <div class="d-flex align-items-center text-secondary">
+              <img src="https://flagcdn.com/w20/my.png" alt="Malaysia flag" class="review-country-flag">
+              <span>Malaysia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="review-header mb-2">
+          <span class="review-date">Reviewed: 29 September 2025</span>
+          <span class="review-rating">9.0</span>
+        </div>
+
+        <div class="review-title">Superb</div>
+
+        <div class="review-section review-pros d-flex">
+          <div class="review-icon">😊</div>
+          <p>Aside from a few small issues, everything was excellent: very clean, well-kept, and comfortable. We will definitely return.</p>
+        </div>
+
+        <div class="review-section review-cons d-flex">
+          <div class="review-icon">🙁</div>
+          <p>My check-in experience was not very pleasant. The lady at the reception, who most likely only works night shifts, seemed to have only limited knowledge of the hotel. From her demeanor, she did not appear particularly well-suited for the hospitality industry. Only after I specifically asked did I receive a minibar price list, which was incomplete. The towels and bathrobes were somewhat worn. At breakfast, boiled eggs were available, but surprisingly no egg cups — as the hotel simply does not provide them 😅. These, however, are just minor details. Overall, we had a wonderful stay at this hotel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   </div>  
 </div>
 
 <!-- License slide panel + overlay (hidden by default) -->
