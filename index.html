@@ -12,7 +12,6 @@
       background-color: #fff;
     }
     header {
-      
       padding: 10px 0;
     }
     .navbar-brand {
@@ -86,11 +85,6 @@
       flex:none;
     }
     .news-card {
-      /*  
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      */
       padding: 15px 0;
       margin-bottom: 12px;
       display: flex;
@@ -107,10 +101,16 @@
     .news-card h5 a:hover {
       text-decoration: underline;
     }
+    .sidebar {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+    }
     .sidebar h6 {
       color: #84b341;
       font-weight: 700;
-      border-bottom: 2px solid #84b341;
+      font-size: 1.1rem;
       padding-bottom: 6px;
       margin-bottom: 15px;
     }
@@ -143,6 +143,9 @@
       margin: 0 10px;
       text-decoration: none;
     }
+
+    /* small pagination spacing */
+    .articles-pagination { padding-top: 8px; }
   </style>
 </head>
 <body>
@@ -150,7 +153,7 @@
   <!-- Header -->
   <header>
     <div class="container d-flex justify-content-between align-items-center">
-      <a class="navbar-brand" href="#"> <img src="bitdeep-logo.png" /></a>
+      <a class="navbar-brand" href="#"> <img src="bitdeep-logo.png" alt="bitDeep" /></a>
       <div class="d-flex align-items-center">        
         <div>
             <a href="#" class="me-3 text-decoration-none text-primary">Submit</a>
@@ -184,7 +187,7 @@
   <div class="alert-bar">
      <div class="container">
      <p>
-     <img src="alert-symbol.jpg" width="24" /> Special offer! Buy this <a href="#" class="text-primary fw-semibold">product</a> and get an accessory of your choice free ⚡
+     <img src="alert-symbol.jpg" width="24" alt="alert" /> Special offer! Buy this <a href="#" class="text-primary fw-semibold">product</a> and get an accessory of your choice free ⚡
      </p>   
     </div>   
  </div>
@@ -200,13 +203,13 @@
         <div class="news-card">
           <div class="rating-badge">7.9</div>
           <div>
-            <h5><a href="#">Make seamless videos with VID2.0</a></h5>
+            <h5><a href="details.html">Make seamless videos with VID2.0</a></h5>
             <p class="mb-0">Because the social graph and content exist on a decentralized blockchain, it is far more resistant to de-platforming and censorship by a single entity.</p>
           </div>
         </div>
 
         <div class="news-card">
-          <div class="rating-badge">7.9</div>
+          <div class="rating-badge" style="background:#1a8fcb;">8.4</div>
           <div>
             <h5><a href="#">100K API calls package from Claude. No expiry on credits!</a></h5>
             <p class="mb-0">The app tokenizes user content and engagement, allowing creators to earn crypto directly from likes and shares.</p>
@@ -214,24 +217,53 @@
         </div>
 
         <div class="news-card">
-          <div class="rating-badge">7.9</div>
+          <div class="rating-badge" style="background:#ff6b6b;">6.7</div>
           <div>
-            <h5><a href="#">Make seamless videos with VID2.0</a></h5>
-            <p class="mb-0">Because the social graph and content exist on a decentralized blockchain, it is far more resistant to de-platforming and censorship by a single entity.</p>
+            <h5><a href="#">AI-powered customer support that actually helps</a></h5>
+            <p class="mb-0">Auto-triage and suggested replies reduce response times and boost CSAT.</p>
           </div>
         </div>
 
         <div class="news-card">
-          <div class="rating-badge">7.9</div>
+          <div class="rating-badge" style="background:#2e7d32;">9.1</div>
           <div>
-            <h5><a href="#">100K API calls package from Claude. No expiry on credits!</a></h5>
-            <p class="mb-0">The app tokenizes user content and engagement, allowing creators to earn crypto directly from likes and shares.</p>
+            <h5><a href="#">Secure on-chain identity for creators</a></h5>
+            <p class="mb-0">Self-sovereign identity helps creators monetize and protect their IP.</p>
           </div>
         </div>
+
+        <div class="news-card">
+          <div class="rating-badge" style="background:#8e44ad;">8.9</div>
+          <div>
+            <h5><a href="#">Cross-platform orchestration for developer tools</a></h5>
+            <p class="mb-0">Connect APIs, webhooks and agents with no-code flows.</p>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="rating-badge" style="background:#ff8c00;">7.2</div>
+          <div>
+            <h5><a href="#">Next-gen analytics for product growth</a></h5>
+            <p class="mb-0">Real-time funnels and retention analysis to accelerate iteration.</p>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="articles-pagination" aria-label="Articles pagination">
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+
       </div>
 
       <!-- Sidebar -->
-      <div class="col-md-4 sidebar">
+      <div class="col-md-4">
+        <div class="sidebar">
         <h6>Latest Reviews</h6>
 
         <div class="review-item">
@@ -259,6 +291,7 @@
         </div>
 
         <button class="btn btn-outline-secondary btn-sm mt-2">Load more</button>
+        </div>
       </div>
     </div>
   </div>
