@@ -81,8 +81,7 @@
       height: 8px;
     }
     .buy-box {
-      background: #d0eef6;
-      border: 2px solid #49c2e1;
+      
       padding: 0rem;
       text-align: center;
       min-height: 200px; /* Keeps height consistent */
@@ -112,6 +111,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #d0eef6;
   }
     #checkoutDiv.fades.visible {z-index: 3;}
 
@@ -188,6 +188,11 @@
       align-items: center;
       background-color: #49bfdb;
       border-bottom: 4px solid #3cb0ca;
+    }
+    #valuebox {
+      background: #d0eef6;
+      border: 2px solid #49c2e1;
+      position:relative
     }
     .card {border-radius: 0px; border:1px solid #000}
 .card-body {padding: 15px;}
@@ -624,6 +629,35 @@
       font-size: 0.9rem;
       color: #6c757d;
     }
+    
+element.style {
+}
+.close-icon {
+    position: absolute;
+    top: 0px;
+    right: 4px;
+    /* width: 34px; */
+    /* height: 34px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 6px;
+    /* background: rgba(0, 0, 0, 0.06); */
+    color: #ff0000;
+    transition: background .15s ease, transform .12s ease;
+    z-index: 5;
+}
+    .close-icon:hover {
+      /*background: rgba(0,0,0,0.1);*/
+      transform: translateY(-1px);
+    }
+
+    /* utility to hide elements */
+    .is-hidden { display: none !important; }
+
     /* ...existing code... */
   </style>
 </head>
@@ -831,8 +865,9 @@
             <h5 class="smtitle">You Save</h5>
             <p class="value">$12</p>
           </div>
+          <div class="close" id="closeText">&times;</div>
         </div>
-        <div class="cancel text-right" id="closeText">Close</div>
+        
         </div>
            <!-- pre-rendered confirmation box (hidden). Shown when user clicks BUY -->
       <div id="checkoutDiv" class="boxwrap fades" aria-hidden="true">
@@ -1079,13 +1114,11 @@
       checkoutDiv.classList.add("visible");
     });
 
+    
     cancelText.addEventListener("click", () => {
       checkoutDiv.classList.remove("visible");
       parentDiv.classList.add("visible");
-    });
-    cancelText.addEventListener("click", () => {
-      checkoutDiv.classList.remove("visible");
-      parentDiv.classList.add("visible");
+      valueBox.classList.remove("is-hidden");
     });
     closeText.addEventListener("click", () => {
       valueBox.classList.remove("visible");
@@ -1191,6 +1224,17 @@ if (uopen && uoverlay && upanel) {
 }
 });
 
+  // attach close behavior to either id "closetext" or existing "closeText"
+  document.addEventListener('DOMContentLoaded', function () {
+    const closeEl = document.getElementById('closetext') || document.getElementById('closeText');
+    if (closeEl) {
+      closeEl.classList.add('close-icon');
+      closeEl.addEventListener('click', function () {
+        const vb = document.getElementById('valuebox');
+        if (vb) vb.classList.add('is-hidden');
+      });
+    }
+  });
  // ...existing code...
 </script>
  
