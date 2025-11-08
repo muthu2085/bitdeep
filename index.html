@@ -69,19 +69,14 @@
       margin: 0;
       font-size: 0.95rem;
     }
-    .rating-badge {
-      background-color: #004aad;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.5rem;
-      border-radius: 6px;
-      border-bottom-left-radius: 0px;
+    .icon {
+    
       width: 50px;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 10px;
+      margin-right: 20px;
       flex:none;
     }
     .news-card {
@@ -109,15 +104,17 @@
     }
     .sidebar h6 {
       color: #84b341;
-      font-weight: 700;
-      font-size: 1.1rem;
+      font-weight: 400;
+      font-size: 1.2rem;
       padding-bottom: 6px;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
     }
     .sidebar .review-item {
       display: flex;
       margin-bottom: 10px;
     }
+    .sidebar .news-card h5 {font-size:1.1rem}
+    .sidebar .news-card p {font-size: 0.875rem;}
     .review-item p {
       font-size: 0.875rem;
       margin-bottom: 0;
@@ -146,6 +143,23 @@
 
     /* small pagination spacing */
     .articles-pagination { padding-top: 8px; }
+    /* Breadcrumb for news cards */
+      .news-breadcrumb {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #222;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .news-breadcrumb .crumb {
+        color: inherit;
+        text-decoration: none;
+        opacity: 0.85;
+      }
+      .news-breadcrumb .crumb:hover { opacity: 1; text-decoration: underline; }
+      .news-breadcrumb .sep { opacity: 0.5; }
   </style>
 </head>
 <body>
@@ -201,53 +215,92 @@
       <div class="col-md-8 pe-lg-5">
         <!-- Repeatable news card -->
         <div class="news-card">
-          <div class="rating-badge">7.9</div>
+          
+          <div class="icon"><img src="icon1.jpg" /></div>
           <div>
             <h5><a href="details.html">Make seamless videos with VID2.0</a></h5>
             <p class="mb-0">Because the social graph and content exist on a decentralized blockchain, it is far more resistant to de-platforming and censorship by a single entity.</p>
+             <!-- ADDED: breadcrumb (place after paragraph) -->
+          <nav class="news-breadcrumb" aria-label="Breadcrumb">
+            
+            <a class="crumb" href="news.html">Engineering Automation</a>
+            <span class="sep">></span>
+            <span class="crumb" aria-current="page">Browser Automation</span>
+          </nav>
+          <!-- /breadcrumb -->
+        
           </div>
-        </div>
+         </div>
 
         <div class="news-card">
-          <div class="rating-badge">8.4</div>
+          <div class="icon"><img src="icon2.jpg" /></div>
           <div>
             <h5><a href="#">100K API calls package from Claude. No expiry on credits!</a></h5>
             <p class="mb-0">The app tokenizes user content and engagement, allowing creators to earn crypto directly from likes and shares.</p>
+              <!-- ADDED: breadcrumb (place after paragraph) -->
+          <nav class="news-breadcrumb" aria-label="Breadcrumb">
+            
+            <a class="crumb" href="news.html">AI Agents</a>
+            <span class="sep">></span>
+            <span class="crumb" aria-current="page">AI Voice Agents</span>
+          </nav>
+          <!-- /breadcrumb -->
           </div>
+        
         </div>
 
         <div class="news-card">
-          <div class="rating-badge">6.7</div>
+          <div class="icon"><img src="icon3.jpg" /></div>
           <div>
             <h5><a href="#">AI-powered customer support that actually helps</a></h5>
             <p class="mb-0">Auto-triage and suggested replies reduce response times and boost CSAT.</p>
+            <!-- ADDED: breadcrumb (place after paragraph) -->
+          <nav class="news-breadcrumb" aria-label="Breadcrumb">
+            
+            <a class="crumb" href="news.html">Physical Products</a>
+            <span class="sep">></span>
+            <span class="crumb" aria-current="page">Games</span>
+          </nav>
+          <!-- /breadcrumb -->
           </div>
+          
         </div>
 
         <div class="news-card">
-          <div class="rating-badge">9.1</div>
+          <div class="icon"><img src="icon4.jpg" /></div>
           <div>
             <h5><a href="#">Secure on-chain identity for creators</a></h5>
             <p class="mb-0">Self-sovereign identity helps creators monetize and protect their IP.</p>
+            <!-- ADDED: breadcrumb (place after paragraph) -->
+          <nav class="news-breadcrumb" aria-label="Breadcrumb">
+            
+            <a class="crumb" href="news.html">Marketing</a>
+            <span class="sep">></span>
+            <span class="crumb" aria-current="page">SEO Tool</span>
+          </nav>
+          <!-- /breadcrumb -->
           </div>
+          
         </div>
 
         <div class="news-card">
-          <div class="rating-badge">8.9</div>
+          <div class="icon"><img src="icon5.jpg" /></div>
           <div>
             <h5><a href="#">Cross-platform orchestration for developer tools</a></h5>
             <p class="mb-0">Connect APIs, webhooks and agents with no-code flows.</p>
+            <!-- ADDED: breadcrumb (place after paragraph) -->
+          <nav class="news-breadcrumb" aria-label="Breadcrumb">
+            
+            <a class="crumb" href="news.html">Ecommerce</a>
+            <span class="sep">></span>
+            <span class="crumb" aria-current="page">Shoipify</span>
+          </nav>
+          <!-- /breadcrumb -->
           </div>
+          
         </div>
 
-        <div class="news-card">
-          <div class="rating-badge">7.2</div>
-          <div>
-            <h5><a href="#">Next-gen analytics for product growth</a></h5>
-            <p class="mb-0">Real-time funnels and retention analysis to accelerate iteration.</p>
-          </div>
-        </div>
-
+        
         <!-- Pagination -->
         <nav class="articles-pagination" aria-label="Articles pagination">
           <ul class="pagination">
@@ -264,34 +317,52 @@
       <!-- Sidebar -->
       <div class="col-md-4">
         <div class="sidebar">
-        <h6>Latest Reviews</h6>
+        <h6>Recent</h6>
 
-        <div class="review-item">
-          <img src="news-img.jpg" alt="review">
-          <div>
-            <p class="fw-semibold">Study 2020: Fake Engagement is Only Half the Problem</p>
-            <small class="text-muted">August 7, 2019</small>
-          </div>
-        </div>
 
-        <div class="review-item">
-          <img src="news-img.jpg" alt="review">
-          <div>
-            <p class="fw-semibold">What Do I Need to Make It in the World of Business?</p>
-            <small class="text-muted">August 7, 2019</small>
-          </div>
-        </div>
+<div class="news-list">
+  <div class="news-card">
+    <div>
+      <h5><a href="details.html">Make seamless videos with VID2.0</a></h5>
+      <p class="mb-1">Create studio-quality short-form content in minutes using AI-assisted templates and smart edits.</p>
+     
+    </div>
+  </div>
 
-        <div class="review-item">
-          <img src="news-img.jpg" alt="review">
-          <div>
-            <p class="fw-semibold">Ecommerce Brands Tend to Create Strong Communities</p>
-            <small class="text-muted">August 7, 2019</small>
-          </div>
-        </div>
+  <div class="news-card">
+    <div>
+      <h5><a href="details.html">100K API calls package from Claude — no expiry</a></h5>
+      <p class="mb-1">High-throughput API credits that never expire — ideal for scaling testing and production workloads.</p>
+      
+    </div>
+  </div>
 
-        <button class="btn btn-outline-secondary btn-sm mt-2">Load more</button>
-        </div>
+  <div class="news-card">
+    <div>
+      <h5><a href="details.html">AI-powered customer support that actually helps</a></h5>
+      <p class="mb-1">Auto-triage, suggested replies and human-in-the-loop escalation to improve CSAT and reduce latency.</p>
+    
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div>
+      <h5><a href="details.html">Secure on-chain identity for creators</a></h5>
+      <p class="mb-1">Self-sovereign identity helps creators monetize content while retaining control of their IP and data.</p>
+      
+    </div>
+  </div>
+
+  <div class="news-card">
+    <div>
+      <h5><a href="details.html">Cross-platform orchestration for developer tools</a></h5>
+      <p class="mb-1">Connect APIs, webhooks and agents with no-code flows to automate releases and monitoring.</p>
+      
+    </div>
+  </div>
+</div>
+
+      </div>
       </div>
     </div>
   </div>
